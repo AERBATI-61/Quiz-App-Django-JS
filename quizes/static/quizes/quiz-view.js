@@ -3,10 +3,60 @@ const quizBox = document.getElementById('quiz-box')
 const quizForm = document.getElementById('quiz-form')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
+const timeBox = document.getElementById('time-box')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 
 
 let data
+
+
+const activateTime = (time) => {
+    if (time.toString().length < 2) {
+        timeBox.innerHTML = `<b>0${time}:00</b>`
+    } else {
+        timeBox.innerHTML = `<b>${time}:00</b>`
+    }
+
+    let minutes = time - 1
+    let seconds = 60
+    let displaySeconds
+    let displayMinutes
+
+    const timer = setInterval(() => {
+        console.log("running....")
+        seconds--
+        if (seconds < 0) {
+            seconds = 59
+            minutes--
+        }
+
+        if (minutes.toString().length < 2) {
+            displayMinutes = '0' + minutes
+        } else {
+            displayMinutes = minutes
+        }
+
+        if (seconds.toString().length < 2) {
+            displaySeconds = '0' + seconds
+        } else {
+            displaySeconds = seconds
+        }
+
+        if (minutes === 0 && seconds === 0) {
+            timeBox.innerHTML = "<b>00:00</b>"
+            setTimeout(() => {
+                clearInterval(timer)
+                alert('Time Over')
+                sendData()
+            }, 500)
+        }
+
+        timeBox.innerHTML = `<b>${displayMinutes}:${displaySeconds}</b>`
+
+
+    }, 1000)
+
+}
 
 $.ajax({
     type: 'GET',
@@ -34,6 +84,7 @@ $.ajax({
                 })
             }
         });
+        activateTime(response.time)
     },
     error: function (error) {
         console.log(error)

@@ -1,13 +1,10 @@
-
-
-
 const modalBtns = [...document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
 const startBtn = document.getElementById('start-button')
 
 const url = window.location.href
 
-modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () =>{
+modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
     const pk = modalBtn.getAttribute('data-pk')
     const name = modalBtn.getAttribute('data-quiz')
     const numQuestions = modalBtn.getAttribute('data-questions')
@@ -18,23 +15,38 @@ modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () =>{
 
     modalBody.innerHTML = `
     <div class="h5 md-3"> Are you sure you want to begin " <b>${name}</b>" ?</div>
-    <div class="text-muted"> 
-        <ul> 
-            <li>difficulty:  " <b>${difficulty}</b>"</li> 
-            <li>number of questions:  " <b>${numQuestions}</b>"</li> 
-            <li>score to pass:  " <b>${scoreToPass} %</b>"</li> 
-            <li>time:  " <b>${time} min</b>"</li> 
-        </ul>
-    </div>
+    
+        
+        
+   <table class="table ">
+  
+  <tbody>
+    <tr>
+      <th scope="row">difficulty: <b style="text-align: right!important;">${difficulty}</b></th>
+    </tr>
+    
+    <tr>
+      <th scope="row">number of questions: <b>${numQuestions}</b></th>
+    </tr>
+    
+    <tr>
+      <th scope="row">score to pass: <b>${scoreToPass}</b></th>
+    </tr>
+    
+    <tr>
+      <th scope="row">time: <b>${time} min</b></th>
+    </tr>
+    
+  </tbody>
+</table>
+        
+        
+
     `
 
     startBtn.addEventListener('click', () => {
         window.location.href = url + pk
     })
-
-
-
-
 
 
 }))

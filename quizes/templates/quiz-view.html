@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="card-header">
                     <a class="navbar-brand" style="float: left" href="{% url 'quizes:quiz-list' %}">Home</a>
-                    <a class="navbar-brand" style="float: right" href="#">{{ quizes.name }}</a>
+                    <a class="navbar-brand" style="float: right; color: black" href="#">{{ quizes.name }}</a>
                     <p style="text-align: center">score to pass: {{ quizes.required_score_to_pass }}%</p>
                 </div>
                 <br>
@@ -36,17 +36,26 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-header">Your Results</h5>
+                <div class="card-header">
+                    <a class="navbar-brand" style="float: left; color: black" href="#">Your Results</a>
+                    <a class="navbar-brand" style="float: right; color: red" id="time-box" href="#" ></a>
+                    <p style="text-align: center">Start Time</p>
+
+
+                </div>
+
+
+
 
                 <p class="card-title">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div id="score-box"></div>
-                        </li>
-                        <li class="list-group-item">
-                            <div id="result-box"></div>
-                        </li>
-                    </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div id="score-box"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <div id="result-box"></div>
+                    </li>
+                </ul>
                 </p>
             </div>
         </div>
