@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% block scripts %}
+        <script src="{% static 'quizes/quiz-view.js' %}" defer></script>
+    {% endblock %}
+
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header">
+                    <a class="navbar-brand" style="float: left" href="{% url 'quizes:quiz-list' %}">Home</a>
+                    <a class="navbar-brand" style="float: right" href="#">{{ quizes.name }}</a>
+                    <p style="text-align: center">score to pass: {{ quizes.required_score_to_pass }}%</p>
+                </div>
+                <br>
+
+                <div class="card-grop">
+                    <div class="col-md-9 offset-md-2">
+                        <div class="card border-secondary mb-5" style="max-width:  45rem;">
+                            <form id="quiz-form" class="mt-3 mb-3">
+                                {% csrf_token %}
+
+                                <div class="card-header" id="quiz-box"></div>
+
+                                <button type="submit" class="btn btn-primary mt-3 btn-block">Save</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-header">Your Results</h5>
+
+                <p class="card-title">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div id="score-box"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <div id="result-box"></div>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#ilk parca#}
+
+{#    <div class="card text-center">#}
+{#        <div class="card-header">#}
+{#            <a class="navbar-brand" style="float: left" href="{% url 'quizes:quiz-list' %}">Home</a>#}
+{#            {{ quizes.name }}#}
+{#            <p>score to pass: {{ quizes.required_score_to_pass }}%</p>#}
+{#        </div>#}
+{##}
+{#        <div class="card-grop">#}
+{#            <div class="col-md-9 offset-md-3">#}
+{#                <div class="card border-secondary mb-3" style="max-width:  22rem;">#}
+{#                    <form id="quiz-form" class="mt-3 mb-3">#}
+{#                        {% csrf_token %}#}
+{##}
+{##}
+{#                        <div class="card-header" id="quiz-box">#}
+{##}
+{#                        </div>#}
+{#                        <br>#}
+{##}
+{#                        <button type="submit" class="btn btn-primary mt-3">#}
+{#                            Save#}
+{#                        </button>#}
+{##}
+{#                    </form>#}
+{#                </div>#}
+{##}
+{##}
+{#            </div>#}
+{##}
+{##}
+{#        </div>#}
+{##}
+{#        <div class="card-footer text-muted">#}
+{#            Good luck#}
+{#        </div>#}
+{#    </div>#}
+
+
+{#son parca#}
+
+{#    <div class="card text-center">#}
+{#        <div class="card-grop">#}
+{#            <div class="col-md-9 offset-md-3">#}
+{#                <div class="card border-secondary mb-3" style="max-width:  22rem;">#}
+{#                    <div class="card" style="width: 18rem;">#}
+{#                        <div class="card-header">#}
+{#                            Featured#}
+{#                        </div>#}
+{#                        <ul class="list-group list-group-flush">#}
+{#                            <li class="list-group-item">#}
+{#                                <div id="score-box"></div>#}
+{#                            </li>#}
+{#                            <li class="list-group-item">#}
+{#                                <div id="result-box"></div>#}
+{#                            </li>#}
+{##}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{##}
+{#            </div>#}
+{##}
+{##}
+{#        </div>#}
+{##}
+{#        <div class="card-footer text-muted">#}
+{#            Good luck#}
+{#        </div>#}
+{#    </div>#}

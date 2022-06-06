@@ -1,5 +1,5 @@
 from django.db import models
-
+import random
 DIFF_CHOICES = (
     ('easy', 'easy'),
     ('medium', 'medium'),
@@ -13,7 +13,7 @@ class Quiz(models.Model):
     topic                    = models.CharField(max_length=120)
     number_of_questions      = models.IntegerField()
     time                     = models.IntegerField(help_text="duration of quiz in minutes")
-    equired_score_to_pass    = models.IntegerField(help_text="required score in %")
+    required_score_to_pass    = models.IntegerField(help_text="required score in %")
     difficulty               = models.CharField(max_length=6, choices=DIFF_CHOICES)
 
 
@@ -21,7 +21,9 @@ class Quiz(models.Model):
         return f'{self.name} -- {self.topic}'
 
     def get_questions(self):
-        return self.question_set.all()
+        questions = list(self.question_set.all())
+        random.shuffle(questions)
+        return questions[:self.number_of_questions]
 
 
     class Meta:

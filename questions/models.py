@@ -10,7 +10,7 @@ class Question(models.Model):
         return str(self.text)
 
 
-    def get_answer(self):
+    def get_answers(self):
         return self.answer_set.all()
 
 
